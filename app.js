@@ -23,15 +23,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+// mongoose.connect(db,{
+//   useNewUrlParser : true,
+//   useUnifiedTopology : true,
+// }).then(()=>console.log('MongoDB connected'))
+// .catch(err=> console.log(err))
+
 mongoose.connect(db,{
-  useNewUrlParser : true,
-  useUnifiedTopology : true,
+    useNewUrlParser:true, 
+    useUnifiedTopology:true,
 }).then(()=>console.log('MongoDB connected'))
-.catch(err=> console.log(err))
+.catch(err=>console.log(err))
 
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/todo',todoRouter)
+app.use('/api/v1/todo',todoRouter);
 
 
 // catch 404 and forward to error handler
